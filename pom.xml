@@ -50,14 +50,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>io.zonky.test</groupId>
-            <artifactId>embedded-database-spring-test</artifactId>
-            <version>1.6.2</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

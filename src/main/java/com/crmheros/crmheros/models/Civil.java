@@ -39,4 +39,8 @@ public class Civil {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public UUID getId() {
+        return id;
+    }
 }
