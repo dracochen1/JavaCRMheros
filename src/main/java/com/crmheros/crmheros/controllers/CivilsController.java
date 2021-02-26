@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,6 +41,18 @@ public class CivilsController {
     public static final class CivilParams {
         public String firstName;
         public String lastName;
+        public String civility;
+        public String password;
+        public String address;
+        public String mail;
+        public Integer phone;
+        public String dateOfBirth;
+        public String dateOfDeath;
+        public String comment;
+        public String dateAdded;
+        public String lastModificationDate;
+        public Integer numberOfIncidentsDeclared;
+        public Integer numberOfAccidentsSuffered;
     }
 
     @PostMapping(path = "/")
@@ -49,6 +62,19 @@ public class CivilsController {
         Civil c = new Civil();
         c.setFirstName(params.firstName);
         c.setLastName(params.lastName);
+        c.setCivility(params.civility);
+        c.setPassword(params.password);
+        c.setAddress(params.address);
+        c.setMail(params.mail);
+        c.setPhone(params.phone);
+        c.setDateOfBirth(params.dateOfBirth);
+        c.setDateOfDeath(params.dateOfDeath);
+        c.setComment(params.comment);
+        c.setDateAdded(params.dateAdded);
+        c.setLastModificationDate(params.lastModificationDate);
+        c.setNumberOfIncidentsDeclared(params.numberOfIncidentsDeclared);
+        c.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
+
         civilRepository.save(c);
         return c;
     }
@@ -60,6 +86,19 @@ public class CivilsController {
         Civil c = civilRepository.findById(id).orElseThrow();
         c.setFirstName(params.firstName);
         c.setLastName(params.lastName);
+        c.setCivility(params.civility);
+        c.setPassword(params.password);
+        c.setAddress(params.address);
+        c.setMail(params.mail);
+        c.setPhone(params.phone);
+        c.setDateOfBirth(params.dateOfBirth);
+        c.setDateOfDeath(params.dateOfDeath);
+        c.setComment(params.comment);
+        c.setDateAdded(params.dateAdded);
+        c.setLastModificationDate(params.lastModificationDate);
+        c.setNumberOfIncidentsDeclared(params.numberOfIncidentsDeclared);
+        c.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
+
         civilRepository.save(c);
         return c;
     }
