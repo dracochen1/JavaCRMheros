@@ -28,6 +28,34 @@ public class Organization {
     @JsonView(ListView.class)
     private String headOfficer;
 
+    @Column()
+    @JsonView(ListView.class)
+    private String member;
+
+    @Column()
+    @JsonView(ListView.class)
+    private String comment;
+
+    @Column()
+    @JsonView(ListView.class)
+    private String createdAt;
+
+    @Column()
+    @JsonView(ListView.class)
+    private String updatedAt;
+
+    @Column()
+    @JsonView(ListView.class)
+    private Integer numberOfIncidentsDeclared;
+
+    @Column()
+    @JsonView(ListView.class)
+    private Integer numberOfAccidentsSuffered;
+
+    public UUID getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -48,4 +76,27 @@ public class Organization {
 
     public void setHeadOfficer(String headOfficer) { this.headOfficer = headOfficer; }
 
+    public String getMember() { return member; }
+
+    public void setMember(String member) { this.member = member; }
+
+    public String getComment() { return comment; }
+
+    public void setComment(String comment) { this.comment = comment; }
+
+    public String getCreatedAt() { return createdAt; }
+
+    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+
+    public String getUpdatedAt() { return updatedAt; }
+
+    public void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
+
+    public Integer getNumberOfIncidentsDeclared() { return numberOfIncidentsDeclared; }
+
+    public void setNumberOfIncidentsDeclared(Integer numberOfIncidentsDeclared) { this.numberOfIncidentsDeclared = numberOfIncidentsDeclared; }
+
+    public Integer getNumberOfAccidentsSuffered() { return this.numberOfAccidentsSuffered; }
+
+    public void setNumberOfAccidentsSuffered(Integer numberOfAccidentsSuffered) { this.numberOfAccidentsSuffered = numberOfAccidentsSuffered; }
 }

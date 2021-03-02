@@ -40,6 +40,12 @@ class OrganizationsController {
         public String name;
         public String headOffice;
         public String headOfficer;
+        public String member;
+        public String comment;
+        public String createdAt;
+        public String updatedAt;
+        public Integer numberOfIncidentsDeclared;
+        public Integer numberOfAccidentsSuffered;
     }
 
     @PostMapping(path = "/")
@@ -49,7 +55,15 @@ class OrganizationsController {
         o.setName(params.name);
         o.setHeadOffice(params.headOffice);
         o.setHeadOfficer(params.headOfficer);
+        o.setMember(params.member);
+        o.setComment(params.comment);
+        o.setCreatedAt(params.createdAt);
+        o.setUpdatedAt(params.updatedAt);
+        o.setNumberOfIncidentsDeclared(params.numberOfIncidentsDeclared);
+        o.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
+
         organizationRepository.save(o);
+
         return o;
     }
 
@@ -60,7 +74,16 @@ class OrganizationsController {
         o.setName(params.name);
         o.setHeadOffice(params.headOffice);
         o.setHeadOfficer(params.headOfficer);
+        o.setMember(params.member);
+        o.setComment(params.comment);
+        o.setCreatedAt(params.createdAt);
+        o.setUpdatedAt(params.updatedAt);
+        o.setNumberOfIncidentsDeclared(params.numberOfIncidentsDeclared);
+        o.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
+        o.setHeadOfficer(params.headOfficer);
+
         organizationRepository.save(o);
+
         return o;
     }
 
