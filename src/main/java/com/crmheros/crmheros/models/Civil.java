@@ -2,12 +2,10 @@ package com.crmheros.crmheros.models;
 
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity(name = "civils")
