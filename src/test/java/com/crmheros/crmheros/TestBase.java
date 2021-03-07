@@ -1,9 +1,6 @@
 package com.crmheros.crmheros;
 
-import com.crmheros.crmheros.repositories.CivilRepository;
-import com.crmheros.crmheros.repositories.CriseRepository;
-import com.crmheros.crmheros.repositories.OrganizationRepository;
-import com.crmheros.crmheros.repositories.RoleRepository;
+import com.crmheros.crmheros.repositories.*;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,9 @@ public abstract class TestBase {
 
     @Autowired
     protected CriseRepository criseRepository;
+
+    @Autowired
+    protected SatisfactionRepository satisfactionRepository;
 
     @Autowired
     protected MockMvc mockMvc;
