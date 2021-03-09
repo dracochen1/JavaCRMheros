@@ -17,9 +17,9 @@ import java.util.UUID;
 public class SuperController {
     private final SuperRepository superRepository;
 
-    public SuperController (SuperRepository cr)
+    public SuperController (SuperRepository su)
     {
-        this.superRepository = cr;
+        this.superRepository = su;
     }
 
     @GetMapping(path = "/super")
