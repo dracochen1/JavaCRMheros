@@ -22,14 +22,14 @@ public class SuperController {
         this.superRepository = su;
     }
 
-    @GetMapping(path = "/super")
+    @GetMapping(path = "/")
     @JsonView(ListView.class)
     public Iterable<Super> getSuper ()
     {
         return superRepository.findAll();
     }
 
-    @GetMapping(path = "/super/{id}")
+    @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Optional<Super> getSuper (@PathVariable UUID id)
     {
@@ -45,7 +45,7 @@ public class SuperController {
         public String comment;
     }
 
-    @PostMapping(path = "/super")
+    @PostMapping(path = "/")
     @JsonView(DetailView.class)
     public Super createSuper (@RequestBody SuperController.SuperParams params)
     {
@@ -61,7 +61,7 @@ public class SuperController {
         return c;
     }
 
-    @PatchMapping(path = "/super/{id}")
+    @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Super updateSuper (@PathVariable UUID id, @RequestBody SuperController.SuperParams params)
     {
@@ -77,7 +77,7 @@ public class SuperController {
         return c;
     }
 
-    @DeleteMapping(path = "/super/{id}")
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteSuper (@PathVariable UUID id)
     {
         Super c = superRepository.findById(id).orElseThrow();

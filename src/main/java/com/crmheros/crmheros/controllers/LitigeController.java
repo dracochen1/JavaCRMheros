@@ -21,14 +21,14 @@ public class LitigeController {
         this.litigeRepository = in;
     }
 
-    @GetMapping(path = "/litige")
+    @GetMapping(path = "/")
     @JsonView(ListView.class)
     public Iterable<Litige> getLitige ()
     {
         return litigeRepository.findAll();
     }
 
-    @GetMapping(path = "/litige/{id}")
+    @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Optional<Litige> getIncident (@PathVariable UUID id)
     {
@@ -43,7 +43,7 @@ public class LitigeController {
         public String photo;
     }
 
-    @PostMapping(path = "/litige")
+    @PostMapping(path = "/")
     @JsonView(DetailView.class)
     public Litige createIncident (@RequestBody LitigeController.LitigeParams params)
     {
@@ -60,7 +60,7 @@ public class LitigeController {
         return c;
     }
 
-    @PatchMapping(path = "/litige/{id}")
+    @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Litige updateLitige (@PathVariable UUID id, @RequestBody LitigeController.LitigeParams params)
     {
@@ -76,7 +76,7 @@ public class LitigeController {
         return c;
     }
 
-    @DeleteMapping(path = "/litige/{id}")
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteLitige (@PathVariable UUID id)
     {
         Litige c = litigeRepository.findById(id).orElseThrow();
