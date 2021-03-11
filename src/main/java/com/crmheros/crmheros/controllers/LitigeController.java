@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/litige")
+@RequestMapping(path = "/litiges")
 public class LitigeController {
     private final LitigeRepository litigeRepository;
 

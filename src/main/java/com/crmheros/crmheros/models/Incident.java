@@ -32,6 +32,10 @@ public class Incident {
     @JsonView(DetailView.class)
     private String source;
 
+    @Column(nullable = false)
+    @JsonView(DetailView.class)
+    private boolean alert;
+
     public UUID getId() {
         return id;
     }
@@ -70,6 +74,14 @@ public class Incident {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public boolean isAlert() {
+        return alert;
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
     }
 }
 

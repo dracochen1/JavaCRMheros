@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/incident")
+@RequestMapping(path = "/incidents")
 public class IncidentController {
     private final IncidentRepository incidentRepository;
 
@@ -40,6 +40,7 @@ public class IncidentController {
         public String description;
         public String location;
         public String source;
+        public boolean alert;
     }
 
     @PostMapping(path = "/")
@@ -51,7 +52,7 @@ public class IncidentController {
         c.setDescription(params.description);
         c.setLocation(params.location);
         c.setSource(params.source);
-
+        c.setAlert(true);
         incidentRepository.save(c);
         return c;
     }
@@ -65,7 +66,7 @@ public class IncidentController {
         c.setDescription(params.description);
         c.setLocation(params.location);
         c.setSource(params.source);
-
+        c.setAlert(params.alert);
         incidentRepository.save(c);
         return c;
     }

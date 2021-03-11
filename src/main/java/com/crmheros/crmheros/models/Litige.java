@@ -18,27 +18,27 @@ public class Litige {
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private String Object;
+    private String object;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private String Type;
+    private String type;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private String RelatedPersons;
+    private String relatedPersons;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private String Mission;
+    private String mission;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private Integer Cost;
+    private Integer cost;
 
     @Column(nullable = true)
     @JsonView(DetailView.class)
-    private String Photo;
+    private String photo;
 
     public UUID getId() {
         return id;
@@ -49,50 +49,50 @@ public class Litige {
     }
 
     public String getObject() {
-        return Object;
+        return object;
     }
 
     public void setObject(String object) {
-        Object = object;
+        this.object = object;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public String getRelatedPersons() {
-        return RelatedPersons;
+        return relatedPersons;
     }
 
     public void setRelatedPersons(String relatedPersons) {
-        RelatedPersons = relatedPersons;
+        this.relatedPersons = relatedPersons;
     }
 
     public String getMission() {
-        return Mission;
+        return mission;
     }
 
     public void setMission(String mission) {
-        Mission = mission;
+        this.mission = mission;
     }
 
     public Integer getCost() {
-        return Cost;
+        return cost;
     }
 
     public void setCost(Integer cost) {
-        Cost = cost;
+        this.cost = cost;
     }
 
     public String getPhoto() {
-        return Photo;
+        return photo;
     }
 
     public void setPhoto(String photo) {
-        Photo = photo;
+        this.photo = photo;
     }
 }

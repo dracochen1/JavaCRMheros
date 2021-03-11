@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/super")
+@RequestMapping(path = "/supers")
 public class SuperController {
     private final SuperRepository superRepository;
 
