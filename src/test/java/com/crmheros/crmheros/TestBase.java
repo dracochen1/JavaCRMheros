@@ -34,5 +34,8 @@ public abstract class TestBase {
     protected RapportRepository rapportRepository;
 
     @Autowired
+    protected MissionRepository missionRepository;
+
+    @Autowired
     protected MockMvc mockMvc;
 }
