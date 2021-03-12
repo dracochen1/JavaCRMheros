@@ -36,6 +36,18 @@ public class Incident {
     @JsonView(DetailView.class)
     private boolean alert;
 
+    @Column(nullable = false)
+    @JsonView(DetailView.class)
+    private boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public UUID getId() {
         return id;
     }
