@@ -42,7 +42,6 @@ public class OrganizationsControllerTest extends TestBase {
         o.setName("Google");
         o.setHeadOffice("California");
         o.setHeadOfficer("Sundar Pichai");
-        o.setMember("Andrew Pavlov");
         o.setComment("May be interested in a 24H care service");
         o.setCreatedAt(d);
         o.setUpdatedAt(d);
@@ -58,7 +57,6 @@ public class OrganizationsControllerTest extends TestBase {
                 .andExpect(jsonPath("$.name").value("Google"))
                 .andExpect(jsonPath("$.headOffice").value("California"))
                 .andExpect(jsonPath("$.headOfficer").value("Sundar Pichai"))
-                .andExpect(jsonPath("$.member").value("Andrew Pavlov"))
                 .andExpect(jsonPath("$.comment").value("May be interested in a 24H care service"))
                 .andExpect(jsonPath("$.createdAt").value(formatingdate.parse("1996-11-18")))
                 .andExpect(jsonPath("$.updatedAt").value(formatingdate.parse("1996-11-18")))
@@ -75,7 +73,6 @@ public class OrganizationsControllerTest extends TestBase {
         o.setName("Google");
         o.setHeadOffice("California");
         o.setHeadOfficer("Sundar Pichai");
-        o.setMember("Andrew Pavlov");
         o.setComment("May be interested in a 24H care service");
         o.setCreatedAt(d);
         o.setUpdatedAt(d);
@@ -92,7 +89,6 @@ public class OrganizationsControllerTest extends TestBase {
                 .andExpect(jsonPath("$.name").value("BlaBlaCar"))
                 .andExpect(jsonPath("$.headOffice").value("Paris"))
                 .andExpect(jsonPath("$.headOfficer").value("Frédéric Mazzella"))
-                .andExpect(jsonPath("$.member").value("Nicolas Barba"))
                 .andExpect(jsonPath("$.comment").value("Not interested in a 24H care service"))
                 .andExpect(jsonPath("$.createdAt").value(formatingdate.parse("1996-11-18")))
                 .andExpect(jsonPath("$.updatedAt").value(formatingdate.parse("1996-11-18")))
@@ -106,7 +102,6 @@ public class OrganizationsControllerTest extends TestBase {
         o.setName("Google");
         o.setHeadOffice("California");
         o.setHeadOfficer("Sundar Pichai");
-        o.setMember("Andrew Pavlov");
         o.setComment("May be interested in a 24H care service");
         o.setCreatedAt(new Date());
         o.setUpdatedAt(new Date());
