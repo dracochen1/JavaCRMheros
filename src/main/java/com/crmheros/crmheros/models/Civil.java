@@ -72,7 +72,9 @@ public class Civil {
     @JsonView(ListView.class)
     private Integer numberOfAccidentsSuffered;
 
-
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Organization organization;
 
     public String getFirstName() {
         return firstName;
@@ -188,5 +190,13 @@ public class Civil {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }

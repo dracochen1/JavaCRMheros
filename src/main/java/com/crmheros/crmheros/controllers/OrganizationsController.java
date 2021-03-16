@@ -40,7 +40,6 @@ class OrganizationsController {
         public String name;
         public String headOffice;
         public String headOfficer;
-        public String member;
         public String comment;
         public String createdAt;
         public String updatedAt;
@@ -55,7 +54,6 @@ class OrganizationsController {
         o.setName(params.name);
         o.setHeadOffice(params.headOffice);
         o.setHeadOfficer(params.headOfficer);
-        o.setMember(params.member);
         o.setComment(params.comment);
         o.setCreatedAt(params.createdAt);
         o.setUpdatedAt(params.updatedAt);
@@ -74,7 +72,6 @@ class OrganizationsController {
         o.setName(params.name);
         o.setHeadOffice(params.headOffice);
         o.setHeadOfficer(params.headOfficer);
-        o.setMember(params.member);
         o.setComment(params.comment);
         o.setCreatedAt(params.createdAt);
         o.setUpdatedAt(params.updatedAt);

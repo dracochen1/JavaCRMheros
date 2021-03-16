@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "organizations")
@@ -28,9 +30,9 @@ public class Organization {
     @JsonView(ListView.class)
     private String headOfficer;
 
-    @Column()
+    @OneToMany(mappedBy = "organization")
     @JsonView(ListView.class)
-    private String member;
+    private Set<Civil> civils;
 
     @Column()
     @JsonView(ListView.class)
@@ -76,10 +78,6 @@ public class Organization {
 
     public void setHeadOfficer(String headOfficer) { this.headOfficer = headOfficer; }
 
-    public String getMember() { return member; }
-
-    public void setMember(String member) { this.member = member; }
-
     public String getComment() { return comment; }
 
     public void setComment(String comment) { this.comment = comment; }
@@ -99,4 +97,12 @@ public class Organization {
     public Integer getNumberOfAccidentsSuffered() { return this.numberOfAccidentsSuffered; }
 
     public void setNumberOfAccidentsSuffered(Integer numberOfAccidentsSuffered) { this.numberOfAccidentsSuffered = numberOfAccidentsSuffered; }
+
+    public Set<Civil> getCivils() {
+        return civils;
+    }
+
+    public void setCivils(Set<Civil> civils) {
+        this.civils = civils;
+    }
 }
