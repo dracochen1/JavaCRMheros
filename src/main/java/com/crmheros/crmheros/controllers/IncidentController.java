@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/incident")
+@RequestMapping(path = "/incidents")
 public class IncidentController {
     private final IncidentRepository incidentRepository;
 
@@ -22,14 +22,14 @@ public class IncidentController {
         this.incidentRepository = in;
     }
 
-    @GetMapping(path = "/incident")
+    @GetMapping(path = "/")
     @JsonView(ListView.class)
     public Iterable<Incident> getIncident ()
     {
         return incidentRepository.findAll();
     }
 
-    @GetMapping(path = "/incident/{id}")
+    @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Optional<Incident> getIncident (@PathVariable UUID id)
     {
@@ -42,7 +42,7 @@ public class IncidentController {
         public String source;
     }
 
-    @PostMapping(path = "/incident")
+    @PostMapping(path = "/")
     @JsonView(DetailView.class)
     public Incident createIncident (@RequestBody IncidentController.IncidentParams params)
     {
@@ -56,7 +56,7 @@ public class IncidentController {
         return c;
     }
 
-    @PatchMapping(path = "/incident/{id}")
+    @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Incident updateIncident (@PathVariable UUID id, @RequestBody IncidentController.IncidentParams params)
     {
@@ -70,7 +70,7 @@ public class IncidentController {
         return c;
     }
 
-    @DeleteMapping(path = "/incident/{id}")
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteIncident (@PathVariable UUID id)
     {
         Incident c = incidentRepository.findById(id).orElseThrow();

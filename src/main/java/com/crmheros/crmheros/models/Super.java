@@ -8,7 +8,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity(name = "Super")
+@Entity(name = "supers")
 public class Super {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,10 +19,6 @@ public class Super {
     @Column(nullable = false)
     @JsonView(DetailView.class)
     private String name;
-
-    @Column(nullable = false)
-    @JsonView(DetailView.class)
-    private String secretIdentity;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
@@ -40,6 +36,14 @@ public class Super {
     @JsonView(DetailView.class)
     private String comment;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "civil_id", referencedColumnName = "id")
+    private Civil civil;
+
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Satisfaction satisfaction;
+
     public UUID getId() {
         return id;
     }
@@ -54,14 +58,6 @@ public class Super {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSecretIdentity() {
-        return secretIdentity;
-    }
-
-    public void setSecretIdentity(String secretIdentity) {
-        this.secretIdentity = secretIdentity;
     }
 
     public String getPower() {
@@ -94,5 +90,21 @@ public class Super {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Civil getCivil() {
+        return civil;
+    }
+
+    public void setCivil(Civil civil) {
+        this.civil = civil;
+    }
+
+    public Satisfaction getSatisfaction() {
+        return satisfaction;
+    }
+
+    public void setSatisfaction(Satisfaction satisfaction) {
+        this.satisfaction = satisfaction;
     }
 }

@@ -8,7 +8,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity(name = "Incident")
+@Entity(name = "incidents")
 public class Incident {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +31,10 @@ public class Incident {
     @Column(nullable = false)
     @JsonView(DetailView.class)
     private String source;
+
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Civil civils;
 
     public UUID getId() {
         return id;
@@ -70,6 +74,14 @@ public class Incident {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public Civil getCivils() {
+        return civils;
+    }
+
+    public void setCivils(Civil civils) {
+        this.civils = civils;
     }
 }
 
