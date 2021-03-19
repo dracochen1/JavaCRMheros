@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "satisfactions")
@@ -40,6 +41,14 @@ public class Satisfaction {
     @Column(nullable = false)
     @JsonView(ListView.class)
     private String source;
+
+    @OneToMany(mappedBy = "satisfaction")
+    @JsonView(ListView.class)
+    private Set<Super> supers;
+
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Rapport rapport;
 
     public UUID getId() {
         return id;
@@ -95,5 +104,21 @@ public class Satisfaction {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public Set<Super> getSupers() {
+        return supers;
+    }
+
+    public void setSupers(Set<Super> supers) {
+        this.supers = supers;
+    }
+
+    public Rapport getRapport() {
+        return rapport;
+    }
+
+    public void setRapport(Rapport rapport) {
+        this.rapport = rapport;
     }
 }

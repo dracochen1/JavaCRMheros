@@ -38,7 +38,6 @@ public class SuperController {
 
     public static final class SuperParams {
         public String name;
-        public String secretIdentity;
         public String power;
         public String weakness;
         public Integer score;
@@ -51,7 +50,6 @@ public class SuperController {
     {
         Super c = new Super();
         c.setName(params.name);
-        c.setSecretIdentity(params.secretIdentity);
         c.setPower(params.power);
         c.setWeakness(params.weakness);
         c.setScore(params.score);
@@ -67,7 +65,6 @@ public class SuperController {
     {
         Super c = superRepository.findById(id).orElseThrow();
         c.setName(params.name);
-        c.setSecretIdentity(params.secretIdentity);
         c.setPower(params.power);
         c.setWeakness(params.weakness);
         c.setScore(params.score);

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "civils")
@@ -75,6 +76,13 @@ public class Civil {
     @ManyToOne
     @JsonView(ListView.class)
     private Organization organization;
+
+    @OneToOne(mappedBy = "civil")
+    private Super supers;
+
+    @OneToMany(mappedBy = "civils", cascade = CascadeType.ALL)
+    @JsonView(ListView.class)
+    private Set<Incident> incidents;
 
     public String getFirstName() {
         return firstName;
@@ -198,5 +206,21 @@ public class Civil {
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
+    }
+
+    public Super getSupers() {
+        return supers;
+    }
+
+    public void setSupers(Super supers) {
+        this.supers = supers;
+    }
+
+    public Set<Incident> getIncidents() {
+        return incidents;
+    }
+
+    public void setIncidents(Set<Incident> incidents) {
+        this.incidents = incidents;
     }
 }

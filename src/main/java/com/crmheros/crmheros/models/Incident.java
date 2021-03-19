@@ -8,7 +8,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity(name = "Incident")
+@Entity(name = "incidents")
 public class Incident {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +31,10 @@ public class Incident {
     @Column(nullable = false)
     @JsonView(DetailView.class)
     private String source;
+  
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Civil civils;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
@@ -94,6 +98,7 @@ public class Incident {
 
     public void setAlert(boolean alert) {
         this.alert = alert;
+
     }
 }
 

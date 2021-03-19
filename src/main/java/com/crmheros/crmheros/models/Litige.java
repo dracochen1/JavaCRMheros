@@ -40,6 +40,10 @@ public class Litige {
     @JsonView(DetailView.class)
     private String photo;
 
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Crise crise;
+
     public UUID getId() {
         return id;
     }
@@ -94,5 +98,13 @@ public class Litige {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Crise getCrise() {
+        return crise;
+    }
+
+    public void setCrise(Crise crise) {
+        this.crise = crise;
     }
 }
