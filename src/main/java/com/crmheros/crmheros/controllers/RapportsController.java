@@ -38,8 +38,6 @@ public class RapportsController {
     public Rapport createRapport(@RequestBody RapportParams params) {
         Rapport r = new Rapport();
         r.setResponsible(params.responsible);
-        r.setFkIdCrise(params.fkIdCrise);
-        r.setFkIdMission(params.fkIdMission);
         r.setComment(params.comment);
 
         rapportRepository.save(r);
@@ -51,8 +49,6 @@ public class RapportsController {
     public Rapport updateRapport(@PathVariable UUID id, @RequestBody RapportParams params) {
         Rapport r = rapportRepository.findById(id).orElseThrow();
         r.setResponsible(params.responsible);
-        r.setFkIdCrise(params.fkIdCrise);
-        r.setFkIdMission(params.fkIdMission);
         r.setComment(params.comment);
 
         rapportRepository.save(r);
@@ -70,7 +66,5 @@ public class RapportsController {
     public static final class RapportParams {
         public String responsible;
         public String comment;
-        public Integer fkIdMission;
-        public Integer fkIdCrise;
     }
 }

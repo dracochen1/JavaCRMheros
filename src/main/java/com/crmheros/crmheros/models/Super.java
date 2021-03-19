@@ -44,6 +44,10 @@ public class Super {
     @JsonView(ListView.class)
     private Satisfaction satisfaction;
 
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Mission mission;
+
     public UUID getId() {
         return id;
     }

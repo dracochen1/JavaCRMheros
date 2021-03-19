@@ -30,7 +30,6 @@ public class SuperControllerTest extends TestBase {
     public void TestIncidentGet() throws Exception{
         Super s = new Super();
         s.setName("Iron-man");
-        s.setSecretIdentity("Tony Stark");
         s.setPower("Son armure");
         s.setWeakness("Attaque radiale");
         s.setScore(10);
@@ -54,7 +53,6 @@ public class SuperControllerTest extends TestBase {
     public void TestIncidentUpdate() throws Exception{
         Super s = new Super();
         s.setName("Iron-man");
-        s.setSecretIdentity("Tony Stark");
         s.setPower("Son armure");
         s.setWeakness("Attaque radiale");
         s.setScore(10);
@@ -79,7 +77,6 @@ public class SuperControllerTest extends TestBase {
     public void TestIncidentDelete() throws Exception{
         Super s = new Super();
         s.setName("Iron-man");
-        s.setSecretIdentity("Tony Stark");
         s.setPower("Son armure");
         s.setWeakness("Attaque radiale");
         s.setScore(10);

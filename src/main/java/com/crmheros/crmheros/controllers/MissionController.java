@@ -42,8 +42,6 @@ class MissionController {
         public String road;
         public String severitylevel;
         public String emergencylevel;
-        public String superheros;
-        public String supervilain;
         public String status;
         public Integer nombercivils;
         public String startdate;
@@ -59,8 +57,6 @@ class MissionController {
         o.setRoad(params.road);
         o.setSeveritylevel(params.severitylevel);
         o.setEmergencylevel(params.emergencylevel);
-        o.setSuperheros(params.superheros);
-        o.setSupervilain(params.supervilain);
         o.setStatus(params.status);
         o.setNombercivils(params.nombercivils);
 
@@ -78,8 +74,6 @@ class MissionController {
         o.setRoad(params.road);
         o.setSeveritylevel(params.severitylevel);
         o.setEmergencylevel(params.emergencylevel);
-        o.setSuperheros(params.superheros);
-        o.setSupervilain(params.supervilain);
         o.setStatus(params.status);
         o.setNombercivils(params.nombercivils);
 

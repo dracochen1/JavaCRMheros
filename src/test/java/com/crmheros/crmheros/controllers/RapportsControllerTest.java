@@ -16,14 +16,12 @@ public class RapportsControllerTest extends TestBase
     {
         this.mockMvc.perform(
                 post("/rapports/")
-                        .content("{ \"responsible\": \"Jules Cano\", \"fkIdMission\": \"3\", \"fkIdCrise\": \"1\", \"comment\": \"Très mécontent\" }")
+                        .content("{ \"responsible\": \"Jules Cano\", \"comment\": \"Très mécontent\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.responsible").value("Jules Cano"))
-                .andExpect(jsonPath("$.comment").value("Très mécontent"))
-                .andExpect(jsonPath("$.fkIdMission").value("3"))
-                .andExpect(jsonPath("$.fkIdCrise").value("1"));
+                .andExpect(jsonPath("$.comment").value("Très mécontent"));
     }
 
     @Test
@@ -31,8 +29,6 @@ public class RapportsControllerTest extends TestBase
         Rapport r = new Rapport();
         r.setResponsible("Jules Cano");
         r.setComment("Très mécontent");
-        r.setFkIdMission(3);
-        r.setFkIdCrise(1);
         rapportRepository.save(r);
 
         this.mockMvc.perform(
@@ -41,8 +37,6 @@ public class RapportsControllerTest extends TestBase
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.responsible").value("Jules Cano"))
                 .andExpect(jsonPath("$.comment").value("Très mécontent"))
-                .andExpect(jsonPath("$.fkIdMission").value("3"))
-                .andExpect(jsonPath("$.fkIdCrise").value("1"))
                 .andExpect(jsonPath("$.id").value(r.getId().toString()));
     }
 
@@ -51,20 +45,16 @@ public class RapportsControllerTest extends TestBase
         Rapport r = new Rapport();
         r.setResponsible("Jules Carno");
         r.setComment("Très mécontent");
-        r.setFkIdMission(3);
-        r.setFkIdCrise(1);
         rapportRepository.save(r);
 
         this.mockMvc.perform(
                 patch("/rapports/" + r.getId().toString())
-                        .content("{ \"responsible\": \"Poulevorde\", \"fkIdMission\": \"4\", \"fkIdCrise\": \"2\", \"comment\": \"personne agressive\" }")
+                        .content("{ \"responsible\": \"Poulevorde\", \"comment\": \"personne agressive\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.responsible").value("Poulevorde"))
                 .andExpect(jsonPath("$.comment").value("personne agressive"))
-                .andExpect(jsonPath("$.fkIdMission").value("4"))
-                .andExpect(jsonPath("$.fkIdCrise").value("2"))
                 .andExpect(jsonPath("$.id").value(r.getId().toString()));
     }
 
@@ -73,8 +63,6 @@ public class RapportsControllerTest extends TestBase
         Rapport r = new Rapport();
         r.setResponsible("Poulevorde");
         r.setComment("Très mécontent");
-        r.setFkIdMission(3);
-        r.setFkIdCrise(1);
         rapportRepository.save(r);
 
         this.mockMvc.perform(
