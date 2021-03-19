@@ -34,5 +34,17 @@ public abstract class TestBase {
     protected RapportRepository rapportRepository;
 
     @Autowired
+    protected MissionRepository missionRepository;
+
+    @Autowired
     protected MockMvc mockMvc;
+
+    @Autowired
+    protected SuperRepository superRepository;
+
+    @Autowired
+    protected LitigeRepository litigeRepository;
+
+    @Autowired
+    protected IncidentRepository incidentRepository;
 }

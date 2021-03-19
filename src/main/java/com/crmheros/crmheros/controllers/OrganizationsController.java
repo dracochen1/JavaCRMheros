@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -41,8 +42,8 @@ class OrganizationsController {
         public String headOffice;
         public String headOfficer;
         public String comment;
-        public String createdAt;
-        public String updatedAt;
+        public Date createdAt;
+        public Date updatedAt;
         public Integer numberOfIncidentsDeclared;
         public Integer numberOfAccidentsSuffered;
     }

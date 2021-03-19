@@ -31,10 +31,26 @@ public class Incident {
     @Column(nullable = false)
     @JsonView(DetailView.class)
     private String source;
-
+  
     @ManyToOne
     @JsonView(ListView.class)
     private Civil civils;
+
+    @Column(nullable = false)
+    @JsonView(DetailView.class)
+    private boolean alert;
+
+    @Column(nullable = false)
+    @JsonView(DetailView.class)
+    private boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public UUID getId() {
         return id;
@@ -76,12 +92,13 @@ public class Incident {
         this.source = source;
     }
 
-    public Civil getCivils() {
-        return civils;
+    public boolean isAlert() {
+        return alert;
     }
 
-    public void setCivils(Civil civils) {
-        this.civils = civils;
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+
     }
 }
 

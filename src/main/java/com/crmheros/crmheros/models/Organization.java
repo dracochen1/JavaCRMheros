@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Set;
 import java.util.UUID;
+import java.util.Set;
+import java.util.Date;
 
 @Entity(name = "organizations")
 public class Organization {
@@ -35,11 +36,11 @@ public class Organization {
 
     @Column()
     @JsonView(ListView.class)
-    private String createdAt;
+    private Date createdAt;
 
     @Column()
     @JsonView(ListView.class)
-    private String updatedAt;
+    private Date updatedAt;
 
     @Column()
     @JsonView(ListView.class)
@@ -81,13 +82,13 @@ public class Organization {
 
     public void setComment(String comment) { this.comment = comment; }
 
-    public String getCreatedAt() { return createdAt; }
+    public Date getCreatedAt() { return createdAt; }
 
-    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
 
-    public String getUpdatedAt() { return updatedAt; }
+    public Date getUpdatedAt() { return updatedAt; }
 
-    public void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
+    public void setUpdatedAt(Date updatedAt) { this.updatedAt = updatedAt; }
 
     public Integer getNumberOfIncidentsDeclared() { return numberOfIncidentsDeclared; }
 

@@ -40,6 +40,8 @@ public class IncidentController {
         public String description;
         public String location;
         public String source;
+        public boolean alert;
+        public boolean status;
     }
 
     @PostMapping(path = "/")
@@ -51,7 +53,8 @@ public class IncidentController {
         c.setDescription(params.description);
         c.setLocation(params.location);
         c.setSource(params.source);
-
+        c.setAlert(true);
+        c.setStatus(true);
         incidentRepository.save(c);
         return c;
     }
@@ -65,7 +68,8 @@ public class IncidentController {
         c.setDescription(params.description);
         c.setLocation(params.location);
         c.setSource(params.source);
-
+        c.setAlert(params.alert);
+        c.setStatus(params.status);
         incidentRepository.save(c);
         return c;
     }
