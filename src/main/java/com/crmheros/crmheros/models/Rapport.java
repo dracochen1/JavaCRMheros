@@ -25,13 +25,9 @@ public class Rapport {
     @JsonView(ListView.class)
     private String comment;
 
-    @Column()
+    @ManyToOne
     @JsonView(ListView.class)
-    private Integer fkIdMission;
-
-    @Column(nullable = false)
-    @JsonView(ListView.class)
-    private Integer fkIdCrise;
+    private Mission mission;
 
     @OneToMany(mappedBy = "rapport")
     @JsonView(ListView.class)
@@ -63,22 +59,6 @@ public class Rapport {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public Integer getFkIdMission() {
-        return fkIdMission;
-    }
-
-    public void setFkIdMission(Integer fkIdMission) {
-        this.fkIdMission = fkIdMission;
-    }
-
-    public Integer getFkIdCrise() {
-        return fkIdCrise;
-    }
-
-    public void setFkIdCrise(Integer fkIdCrise) {
-        this.fkIdCrise = fkIdCrise;
     }
 
     public Set<Satisfaction> getSatisfactions() {

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "incidents")
@@ -31,10 +32,6 @@ public class Incident {
     @Column(nullable = false)
     @JsonView(DetailView.class)
     private String source;
-  
-    @ManyToOne
-    @JsonView(ListView.class)
-    private Civil civils;
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
@@ -43,6 +40,14 @@ public class Incident {
     @Column(nullable = false)
     @JsonView(DetailView.class)
     private boolean status;
+
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Civil civils;
+
+    @OneToMany(mappedBy = "incident")
+    @JsonView(ListView.class)
+    private Set<Mission> missions;
 
     public boolean isStatus() {
         return status;

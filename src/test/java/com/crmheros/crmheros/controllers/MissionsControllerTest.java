@@ -15,7 +15,7 @@ public class MissionsControllerTest extends TestBase{
     public void TestMissionsCreation() throws Exception {
         this.mockMvc.perform(
                 post("/missions/")
-                        .content("{ \"titre\": \"Sauver le monde\", \"nature\": \"Sauvetage\", \"road\": \"A l'angle de la maison blanche\", \"severitylevel\" : \"Haut\", \"emergencylevel\" : \"Prioritaire\", \"superheros\" : \"Patrick l'éponge\", \"supervilain\" : \"Charlo l'écureuil fou\", \"status\": \"En cour\", \"nombercivils\" : \"10\" }")
+                        .content("{ \"titre\": \"Sauver le monde\", \"nature\": \"Sauvetage\", \"road\": \"A l'angle de la maison blanche\", \"severitylevel\" : \"Haut\", \"emergencylevel\" : \"Prioritaire\", \"status\": \"En cour\", \"nombercivils\" : \"10\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -24,8 +24,6 @@ public class MissionsControllerTest extends TestBase{
                 .andExpect(jsonPath("$.road").value("A l'angle de la maison blanche"))
                 .andExpect(jsonPath("$.severitylevel").value("Haut"))
                 .andExpect(jsonPath("$.emergencylevel").value("Prioritaire"))
-                .andExpect(jsonPath("$.superheros").value("Patrick l'éponge"))
-                .andExpect(jsonPath("$.supervilain").value("Charlo l'écureuil fou"))
                 .andExpect(jsonPath("$.status").value("En cour"))
                 .andExpect(jsonPath("$.nombercivils").value("10"));
     }
@@ -38,8 +36,6 @@ public class MissionsControllerTest extends TestBase{
         o.setRoad("Non loin de la maison blanche");
         o.setSeveritylevel("fort");
         o.setEmergencylevel("fort");
-        o.setSuperheros("Squeze l'escargot");
-        o.setSupervilain("Robert la limace");
         o.setStatus("En cour");
         o.setNombercivils(1);
 
@@ -54,8 +50,6 @@ public class MissionsControllerTest extends TestBase{
                 .andExpect(jsonPath("$.road").value("Non loin de la maison blanche"))
                 .andExpect(jsonPath("$.severitylevel").value("fort"))
                 .andExpect(jsonPath("$.emergencylevel").value("fort"))
-                .andExpect(jsonPath("$.superheros").value("Squeze l'escargot"))
-                .andExpect(jsonPath("$.supervilain").value("Robert la limace"))
                 .andExpect(jsonPath("$.status").value("En cour"))
                 .andExpect(jsonPath("$.nombercivils").value("1"))
                 .andExpect(jsonPath("$.id").value(o.getId().toString()));
@@ -69,8 +63,6 @@ public class MissionsControllerTest extends TestBase{
         o.setRoad("Non loin de la maison blanche");
         o.setSeveritylevel("fort");
         o.setEmergencylevel("fort");
-        o.setSuperheros("Squeze l'escargot");
-        o.setSupervilain("Robert la limace");
         o.setStatus("En cour");
         o.setNombercivils(1);
 
@@ -78,7 +70,7 @@ public class MissionsControllerTest extends TestBase{
 
         this.mockMvc.perform(
                 post("/missions/")
-                        .content("{ \"titre\": \"Sauver le monde\", \"nature\": \"Sauvetage\", \"road\": \"A l'angle de la maison blanche\", \"severitylevel\" : \"Haut\", \"emergencylevel\" : \"Prioritaire\", \"superheros\" : \"Patrick l'éponge\", \"supervilain\" : \"Charlo l'écureuil fou\", \"status\": \"En cour\", \"nombercivils\" : \"10\" }")
+                        .content("{ \"titre\": \"Sauver le monde\", \"nature\": \"Sauvetage\", \"road\": \"A l'angle de la maison blanche\", \"severitylevel\" : \"Haut\", \"emergencylevel\" : \"Prioritaire\", \"status\": \"En cour\", \"nombercivils\" : \"10\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -87,8 +79,6 @@ public class MissionsControllerTest extends TestBase{
                 .andExpect(jsonPath("$.road").value("A l'angle de la maison blanche"))
                 .andExpect(jsonPath("$.severitylevel").value("Haut"))
                 .andExpect(jsonPath("$.emergencylevel").value("Prioritaire"))
-                .andExpect(jsonPath("$.superheros").value("Patrick l'éponge"))
-                .andExpect(jsonPath("$.supervilain").value("Charlo l'écureuil fou"))
                 .andExpect(jsonPath("$.status").value("En cour"))
                 .andExpect(jsonPath("$.nombercivils").value("10"));
     }
@@ -101,8 +91,6 @@ public class MissionsControllerTest extends TestBase{
         o.setRoad("Non loin de la maison blanche");
         o.setSeveritylevel("fort");
         o.setEmergencylevel("fort");
-        o.setSuperheros("Squeze l'escargot");
-        o.setSupervilain("Robert la limace");
         o.setStatus("En cour");
         o.setNombercivils(1);
 

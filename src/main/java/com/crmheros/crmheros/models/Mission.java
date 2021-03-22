@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "missions")
@@ -38,14 +39,6 @@ public class Mission {
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private String superheros;
-
-    @Column(nullable = false)
-    @JsonView(DetailView.class)
-    private String supervilain;
-
-    @Column(nullable = false)
-    @JsonView(DetailView.class)
     private String status;
 
     @Column(nullable = false)
@@ -59,6 +52,22 @@ public class Mission {
     @Column()
     @JsonView(DetailView.class)
     private String enddate;
+
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Incident incident;
+
+    @OneToMany(mappedBy = "mission")
+    @JsonView(ListView.class)
+    private Set<Super> supers;
+
+    @OneToMany(mappedBy = "mission")
+    @JsonView(ListView.class)
+    private Set<Rapport> rapports;
+
+    @OneToMany(mappedBy = "mission")
+    @JsonView(ListView.class)
+    private Set<Crise> crises;
 
     public UUID getId() {
         return id;
@@ -108,22 +117,6 @@ public class Mission {
         this.emergencylevel = emergencylevel;
     }
 
-    public String getSuperheros() {
-        return superheros;
-    }
-
-    public void setSuperheros(String superheros) {
-        this.superheros = superheros;
-    }
-
-    public String getSupervilain() {
-        return supervilain;
-    }
-
-    public void setSupervilain(String supervilain) {
-        this.supervilain = supervilain;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -138,5 +131,13 @@ public class Mission {
 
     public void setNombercivils(int nombercivils) {
         this.nombercivils = nombercivils;
+    }
+
+    public Set<Super> getSupers() {
+        return supers;
+    }
+
+    public void setSupers(Set<Super> supers) {
+        this.supers = supers;
     }
 }

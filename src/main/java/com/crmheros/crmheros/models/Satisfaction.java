@@ -26,10 +26,6 @@ public class Satisfaction {
     @JsonView(ListView.class)
     private String mail;
 
-    @Column()
-    @JsonView(ListView.class)
-    private Integer fk_super;
-
     @Column(nullable = false)
     @JsonView(ListView.class)
     private String comment;
@@ -72,14 +68,6 @@ public class Satisfaction {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public Integer getFk_super() {
-        return fk_super;
-    }
-
-    public void setFk_super(Integer fk_super) {
-        this.fk_super = fk_super;
     }
 
     public String getComment() {

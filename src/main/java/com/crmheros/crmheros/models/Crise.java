@@ -29,6 +29,10 @@ public class Crise {
     @JsonView(ListView.class)
     private Rapport rapport;
 
+    @ManyToOne
+    @JsonView(ListView.class)
+    private Mission mission;
+
     @OneToMany(mappedBy = "crise")
     @JsonView(ListView.class)
     private Set<Litige> litiges;

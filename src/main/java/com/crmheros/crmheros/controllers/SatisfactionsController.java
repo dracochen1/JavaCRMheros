@@ -39,7 +39,6 @@ public class SatisfactionsController {
         Satisfaction s = new Satisfaction();
         s.setPhone(params.phone);
         s.setMail(params.mail);
-        s.setFk_super(params.fk_super);
         s.setComment(params.comment);
         s.setScore(params.score);
         s.setSource(params.source);
@@ -55,7 +54,6 @@ public class SatisfactionsController {
         Satisfaction s = satisfactionRepository.findById(id).orElseThrow();
         s.setPhone(params.phone);
         s.setMail(params.mail);
-        s.setFk_super(params.fk_super);
         s.setComment(params.comment);
         s.setScore(params.score);
         s.setSource(params.source);
@@ -76,7 +74,6 @@ public class SatisfactionsController {
     public static final class SatisfactionParams {
         public Integer phone;
         public String mail;
-        public Integer fk_super;
         public String comment;
         public Integer score;
         public String source;
