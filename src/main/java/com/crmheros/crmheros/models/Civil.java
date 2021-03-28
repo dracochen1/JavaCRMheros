@@ -33,7 +33,7 @@ public class Civil {
     @JsonView(ListView.class)
     private String civility;
 
-    @Column(nullable = false)
+    @Column()
     @JsonView(ListView.class)
     private String address;
 
@@ -76,6 +76,10 @@ public class Civil {
     @ManyToOne
     @JsonView(ListView.class)
     private Organization organization;
+
+    @OneToMany(mappedBy="civil")
+    @JsonView(ListView.class)
+    private Set<Role> roles;
 
     @OneToOne(mappedBy = "civil")
     private Super supers;
@@ -200,13 +204,7 @@ public class Civil {
         this.password = password;
     }
 
-    public Organization getOrganization() {
-        return organization;
-    }
 
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
 
     public Super getSupers() {
         return supers;
@@ -222,5 +220,13 @@ public class Civil {
 
     public void setIncidents(Set<Incident> incidents) {
         this.incidents = incidents;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }
