@@ -3,13 +3,13 @@ package com.crmheros.crmheros.controllers;
 import com.crmheros.crmheros.models.Civil;
 import com.crmheros.crmheros.repositories.CivilRepository;
 import com.crmheros.crmheros.views.DetailView;
-import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/auth")
@@ -19,11 +19,12 @@ public class AuthController {
     private CivilRepository civilRepository;
 
 
-    @GetMapping(path = "/login/{id}")
+    @GetMapping(path = "/login/{mail}")
     @JsonView(DetailView.class)
-    public Civil loginCivil(@PathVariable("id") UUID id) throws Exception {
-        return civilRepository.findById(id).map(civil -> {
+    public Civil loginCivil(@PathVariable("mail") String mail) throws Exception {
+
+        return civilRepository.findByMail(mail).map(civil -> {
             return civil;
-        }).orElseThrow(() -> new Exception("Le civil avec l'id " + id + " n'a pas été trouvé dans la database."));
+        }).orElseThrow(() -> new Exception("Le civil avec l'identifiant de service " + mail + " n'a pas été trouvé dans la database."));
     }
 }
