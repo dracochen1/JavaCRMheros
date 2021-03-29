@@ -2,6 +2,7 @@ package com.crmheros.crmheros.models;
 
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
@@ -51,7 +52,7 @@ public class Organization {
     private Integer numberOfAccidentsSuffered;
 
     @OneToMany(mappedBy = "organization")
-    @JsonView(ListView.class)
+    @JsonManagedReference
     private Set<Civil> civils;
 
     public UUID getId() {
