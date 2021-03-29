@@ -2,6 +2,7 @@ package com.crmheros.crmheros.models;
 
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
@@ -74,7 +75,7 @@ public class Civil {
     private Integer numberOfAccidentsSuffered;
 
     @ManyToOne
-    @JsonView(ListView.class)
+    @JsonBackReference
     private Organization organization;
 
     @OneToMany(mappedBy="civil")
