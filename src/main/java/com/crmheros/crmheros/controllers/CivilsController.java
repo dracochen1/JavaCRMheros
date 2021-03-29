@@ -2,7 +2,11 @@ package com.crmheros.crmheros.controllers;
 
 import com.crmheros.crmheros.models.Civil;
 
+import com.crmheros.crmheros.models.Role;
+import com.crmheros.crmheros.models.RoleStatus;
 import com.crmheros.crmheros.repositories.CivilRepository;
+
+import com.crmheros.crmheros.repositories.OrganizationRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -10,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,9 +23,12 @@ import java.util.UUID;
 public class CivilsController {
     private final CivilRepository civilRepository;
 
-    public CivilsController (CivilRepository cr)
+    private final OrganizationRepository organizationRepository;
+
+    public CivilsController (CivilRepository cr, OrganizationRepository or)
     {
         this.civilRepository = cr;
+        this.organizationRepository = or;
     }
 
     @GetMapping(path = "/")
@@ -50,6 +58,8 @@ public class CivilsController {
         public String comment;
         public String dateAdded;
         public String lastModificationDate;
+        public String role;
+        public UUID organization;
         public Integer numberOfIncidentsDeclared;
         public Integer numberOfAccidentsSuffered;
     }
@@ -58,6 +68,7 @@ public class CivilsController {
     @JsonView(DetailView.class)
     public Civil createCivil (@RequestBody CivilParams params)
     {
+        var orga = organizationRepository.findById(params.organization).orElseThrow();
         Civil c = new Civil();
         c.setFirstName(params.firstName);
         c.setLastName(params.lastName);
@@ -73,6 +84,13 @@ public class CivilsController {
         c.setLastModificationDate(params.lastModificationDate);
         c.setNumberOfIncidentsDeclared(params.numberOfIncidentsDeclared);
         c.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
+        c.setOrganization(orga);
+
+        Role r = new Role();
+        r.setCivil(c);
+        r.setRole(RoleStatus.employee);
+        r.setActif(true);
+        r.setCreatedAt(new Date());
 
         civilRepository.save(c);
         return c;

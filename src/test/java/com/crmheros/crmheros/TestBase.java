@@ -22,9 +22,6 @@ public abstract class TestBase {
     protected OrganizationRepository organizationRepository;
 
     @Autowired
-    protected RoleRepository roleRepository;
-
-    @Autowired
     protected CriseRepository criseRepository;
 
     @Autowired
