@@ -121,6 +121,7 @@ public class CivilsController {
     }
 
     @DeleteMapping(path = "/{id}")
+    @JsonView(DetailView.class)
     public ResponseEntity<Void> deleteCivil (@PathVariable UUID id)
     {
         Civil c = civilRepository.findById(id).orElseThrow();
