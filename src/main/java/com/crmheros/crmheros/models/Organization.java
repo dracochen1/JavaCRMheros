@@ -53,6 +53,7 @@ public class Organization {
 
     @OneToMany(mappedBy = "organization")
     @JsonManagedReference
+    @JsonView(DetailView.class)
     private Set<Civil> civils;
 
     public UUID getId() {

@@ -76,6 +76,7 @@ public class Civil {
 
     @ManyToOne
     @JsonBackReference
+    @JsonView(ListView.class)
     private Organization organization;
 
     @OneToMany(mappedBy="civil")
@@ -83,6 +84,8 @@ public class Civil {
     private Set<Role> roles;
 
     @OneToOne(mappedBy = "civil")
+    @JsonBackReference
+    @JsonView(ListView.class)
     private Super supers;
 
     @OneToMany(mappedBy = "civils", cascade = CascadeType.ALL)
