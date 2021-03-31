@@ -1,6 +1,8 @@
 package com.crmheros.crmheros.controllers;
 
 import com.crmheros.crmheros.models.Super;
+import com.crmheros.crmheros.repositories.CivilRepository;
+import com.crmheros.crmheros.repositories.OrganizationRepository;
 import com.crmheros.crmheros.repositories.SuperRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
@@ -16,10 +18,12 @@ import java.util.UUID;
 @RequestMapping(path = "/supers")
 public class SuperController {
     private final SuperRepository superRepository;
+    private final CivilRepository civilRepository;
 
-    public SuperController (SuperRepository su)
+    public SuperController (SuperRepository su, CivilRepository ci)
     {
         this.superRepository = su;
+        this.civilRepository = ci;
     }
 
     @GetMapping(path = "/")
@@ -42,18 +46,21 @@ public class SuperController {
         public String weakness;
         public Integer score;
         public String comment;
+        public UUID civil;
     }
 
     @PostMapping(path = "/")
     @JsonView(DetailView.class)
     public Super createSuper (@RequestBody SuperController.SuperParams params)
     {
+        var civil = civilRepository.findById(params.civil).orElseThrow();
         Super c = new Super();
         c.setName(params.name);
         c.setPower(params.power);
         c.setWeakness(params.weakness);
         c.setScore(params.score);
         c.setComment(params.comment);
+        c.setCivil(civil);
 
         superRepository.save(c);
         return c;

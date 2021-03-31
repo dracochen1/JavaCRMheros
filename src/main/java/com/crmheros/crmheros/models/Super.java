@@ -2,6 +2,8 @@ package com.crmheros.crmheros.models;
 
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
@@ -17,7 +19,7 @@ public class Super {
     private UUID id;
 
     @Column(nullable = false)
-    @JsonView(DetailView.class)
+    @JsonView(ListView.class)
     private String name;
 
     @Column(nullable = false)
@@ -37,6 +39,8 @@ public class Super {
     private String comment;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @JsonView(ListView.class)
     @JoinColumn(name = "civil_id", referencedColumnName = "id")
     private Civil civil;
 
