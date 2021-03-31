@@ -31,6 +31,11 @@ class OrganizationsController {
         return organizationRepository.findAll();
     }
 
+    @GetMapping("/count")
+    private Long getNumberOfOrganization(){
+        return organizationRepository.count();
+    }
+
     @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Optional<Organization> getOrganization(@PathVariable UUID id) {
