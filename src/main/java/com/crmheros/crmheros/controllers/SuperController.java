@@ -40,6 +40,11 @@ public class SuperController {
         return superRepository.findById(id);
     }
 
+    @GetMapping("/count")
+    private Long getNumberOfUsers(){
+        return superRepository.count();
+    }
+
     public static final class SuperParams {
         public String name;
         public String power;

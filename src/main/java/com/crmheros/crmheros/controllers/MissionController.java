@@ -30,6 +30,11 @@ class MissionController {
         return missionRepository.findAll();
     }
 
+    @GetMapping("/count")
+    private Long getNumberOfMissions(){
+        return missionRepository.count();
+    }
+
     @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
     public Optional<Mission> getMission(@PathVariable UUID id) {
