@@ -20,12 +20,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path="/civils")
-public class CivilsController {
+public class CivilController {
     private final CivilRepository civilRepository;
 
     private final OrganizationRepository organizationRepository;
 
-    public CivilsController (CivilRepository cr, OrganizationRepository or)
+    public CivilController(CivilRepository cr, OrganizationRepository or)
     {
         this.civilRepository = cr;
         this.organizationRepository = or;

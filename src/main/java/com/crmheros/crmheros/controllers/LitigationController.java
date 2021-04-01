@@ -1,6 +1,6 @@
 package com.crmheros.crmheros.controllers;
-import com.crmheros.crmheros.models.Litige;
-import com.crmheros.crmheros.repositories.LitigeRepository;
+import com.crmheros.crmheros.models.Litigation;
+import com.crmheros.crmheros.repositories.LitigationRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -13,26 +13,26 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/litiges")
-public class LitigeController {
-    private final LitigeRepository litigeRepository;
+public class LitigationController {
+    private final LitigationRepository litigationRepository;
 
-    public LitigeController(LitigeRepository in)
+    public LitigationController(LitigationRepository in)
     {
-        this.litigeRepository = in;
+        this.litigationRepository = in;
     }
 
     @GetMapping(path = "/")
     @JsonView(ListView.class)
-    public Iterable<Litige> getLitige ()
+    public Iterable<Litigation> getLitige ()
     {
-        return litigeRepository.findAll();
+        return litigationRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Optional<Litige> getIncident (@PathVariable UUID id)
+    public Optional<Litigation> getIncident (@PathVariable UUID id)
     {
-        return litigeRepository.findById(id);
+        return litigationRepository.findById(id);
     }
     public static final class LitigeParams {
         public String object;
@@ -45,9 +45,9 @@ public class LitigeController {
 
     @PostMapping(path = "/")
     @JsonView(DetailView.class)
-    public Litige createIncident (@RequestBody LitigeController.LitigeParams params)
+    public Litigation createIncident (@RequestBody LitigationController.LitigeParams params)
     {
-        Litige c = new Litige();
+        Litigation c = new Litigation();
         c.setObject(params.object);
         c.setType(params.type);
         c.setRelatedPersons(params.relatedPersons);
@@ -56,15 +56,15 @@ public class LitigeController {
         c.setPhoto(params.photo);
 
 
-        litigeRepository.save(c);
+        litigationRepository.save(c);
         return c;
     }
 
     @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Litige updateLitige (@PathVariable UUID id, @RequestBody LitigeController.LitigeParams params)
+    public Litigation updateLitige (@PathVariable UUID id, @RequestBody LitigationController.LitigeParams params)
     {
-        Litige c = litigeRepository.findById(id).orElseThrow();
+        Litigation c = litigationRepository.findById(id).orElseThrow();
         c.setObject(params.object);
         c.setType(params.type);
         c.setRelatedPersons(params.relatedPersons);
@@ -72,15 +72,15 @@ public class LitigeController {
         c.setCost(params.cost);
         c.setPhoto(params.photo);
 
-        litigeRepository.save(c);
+        litigationRepository.save(c);
         return c;
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteLitige (@PathVariable UUID id)
     {
-        Litige c = litigeRepository.findById(id).orElseThrow();
-        litigeRepository.delete(c);
+        Litigation c = litigationRepository.findById(id).orElseThrow();
+        litigationRepository.delete(c);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

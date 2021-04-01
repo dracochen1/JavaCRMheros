@@ -44,7 +44,7 @@ public class Satisfaction {
 
     @ManyToOne
     @JsonView(ListView.class)
-    private Rapport rapport;
+    private Report report;
 
     public UUID getId() {
         return id;
@@ -102,11 +102,11 @@ public class Satisfaction {
         this.supers = supers;
     }
 
-    public Rapport getRapport() {
-        return rapport;
+    public Report getRapport() {
+        return report;
     }
 
-    public void setRapport(Rapport rapport) {
-        this.rapport = rapport;
+    public void setRapport(Report report) {
+        this.report = report;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "crises")
-public class Crise {
+public class Crisis {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "org.hibernate.type.PostgresUUIDType")
@@ -27,15 +27,15 @@ public class Crise {
 
     @ManyToOne
     @JsonView(ListView.class)
-    private Rapport rapport;
+    private Report report;
 
     @ManyToOne
     @JsonView(ListView.class)
     private Mission mission;
 
-    @OneToMany(mappedBy = "crise")
+    @OneToMany(mappedBy = "crisis")
     @JsonView(ListView.class)
-    private Set<Litige> litiges;
+    private Set<Litigation> litigations;
 
     public String getType() {
         return type;
@@ -61,19 +61,19 @@ public class Crise {
         this.id = id;
     }
 
-    public Rapport getRapport() {
-        return rapport;
+    public Report getReport() {
+        return report;
     }
 
-    public void setRapport(Rapport rapport) {
-        this.rapport = rapport;
+    public void setReport(Report report) {
+        this.report = report;
     }
 
-    public Set<Litige> getLitiges() {
-        return litiges;
+    public Set<Litigation> getLitigations() {
+        return litigations;
     }
 
-    public void setLitiges(Set<Litige> litiges) {
-        this.litiges = litiges;
+    public void setLitigations(Set<Litigation> litigations) {
+        this.litigations = litigations;
     }
 }

@@ -16,10 +16,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/organizations")
-class OrganizationsController {
+class OrganizationController {
     private final OrganizationRepository organizationRepository;
 
-    public OrganizationsController(OrganizationRepository or) {
+    public OrganizationController(OrganizationRepository or) {
 
         this.organizationRepository = or;
     }

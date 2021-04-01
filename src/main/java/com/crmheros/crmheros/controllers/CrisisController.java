@@ -1,8 +1,8 @@
 package com.crmheros.crmheros.controllers;
 
-import com.crmheros.crmheros.models.Crise;
+import com.crmheros.crmheros.models.Crisis;
 
-import com.crmheros.crmheros.repositories.CriseRepository;
+import com.crmheros.crmheros.repositories.CrisisRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -16,25 +16,25 @@ import java.util.UUID;
 @RestController
 @RequestMapping(path="/crises")
 public class CrisisController {
-    private final CriseRepository criseRepository;
+    private final CrisisRepository crisisRepository;
 
-    public CrisisController(CriseRepository cr)
+    public CrisisController(CrisisRepository cr)
     {
-        this.criseRepository = cr;
+        this.crisisRepository = cr;
     }
 
     @GetMapping(path = "/")
     @JsonView(ListView.class)
-    public Iterable<Crise> getCrises ()
+    public Iterable<Crisis> getCrises ()
     {
-        return criseRepository.findAll();
+        return crisisRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Optional<Crise> getCrise (@PathVariable UUID id)
+    public Optional<Crisis> getCrise (@PathVariable UUID id)
     {
-        return criseRepository.findById(id);
+        return crisisRepository.findById(id);
     }
 
     public static final class CriseParams {
@@ -44,33 +44,33 @@ public class CrisisController {
 
     @PostMapping(path = "/")
     @JsonView(DetailView.class)
-    public Crise createCrise (@RequestBody CrisisController.CriseParams params)
+    public Crisis createCrise (@RequestBody CrisisController.CriseParams params)
     {
-        Crise c = new Crise();
+        Crisis c = new Crisis();
         c.setType(params.type);
         c.setDescription(params.description);
 
-        criseRepository.save(c);
+        crisisRepository.save(c);
         return c;
     }
 
     @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Crise updateCrise (@PathVariable UUID id, @RequestBody CrisisController.CriseParams params)
+    public Crisis updateCrise (@PathVariable UUID id, @RequestBody CrisisController.CriseParams params)
     {
-        Crise c = criseRepository.findById(id).orElseThrow();
+        Crisis c = crisisRepository.findById(id).orElseThrow();
         c.setType(params.type);
         c.setDescription(params.description);
 
-        criseRepository.save(c);
+        crisisRepository.save(c);
         return c;
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteCrise (@PathVariable UUID id)
     {
-        Crise c = criseRepository.findById(id).orElseThrow();
-        criseRepository.delete(c);
+        Crisis c = crisisRepository.findById(id).orElseThrow();
+        crisisRepository.delete(c);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
