@@ -3,6 +3,7 @@ package com.crmheros.crmheros.models;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
@@ -78,9 +79,10 @@ public class Civil {
     @JsonBackReference
     private Organization organization;
 
-    @OneToMany(mappedBy="civil")
+    @OneToMany(mappedBy="civil", fetch=FetchType.EAGER)
+    @JsonManagedReference
     @JsonView(ListView.class)
-    private Set<Role> roles;
+    public Set<Role> roles;
 
     @OneToOne(mappedBy = "civil")
     private Super supers;
