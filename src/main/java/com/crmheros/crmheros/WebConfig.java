@@ -31,6 +31,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     public @Override
     void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(createRoleInterceptor()).addPathPatterns("/supers/");
+        registry.addInterceptor(createRoleInterceptor()).addPathPatterns("/supers/count");
     }
 }
