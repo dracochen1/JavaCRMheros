@@ -32,7 +32,7 @@ public class CrisesController {
 
     @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Optional<Crise> getCivil (@PathVariable UUID id)
+    public Optional<Crise> getCrise (@PathVariable UUID id)
     {
         return criseRepository.findById(id);
     }
