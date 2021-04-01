@@ -1,6 +1,7 @@
 package com.crmheros.crmheros.models;
 
 import com.crmheros.crmheros.views.ListView;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 
@@ -32,6 +33,7 @@ public class Role {
     @JsonView(ListView.class)
     private RoleStatus role;
 
+    @JsonBackReference
     @ManyToOne
     @JsonView(ListView.class)
     private Civil civil;
