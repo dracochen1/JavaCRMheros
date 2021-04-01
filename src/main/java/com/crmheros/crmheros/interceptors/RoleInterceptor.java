@@ -27,6 +27,12 @@ public class RoleInterceptor implements HandlerInterceptor {
         Civil civil = civilRepository.findByMail(userMail)
                 .orElseThrow(() -> new Exception("Civil non autorisé ici !"));
 
+        for (Role role : civil.roles) {
+            if (role.getRole().equals(RoleStatus.maitresupreme)) {
+                return true;
+            }
+        }
+
         throw new Exception("Civil non autorisé ici !");
     }
 }
