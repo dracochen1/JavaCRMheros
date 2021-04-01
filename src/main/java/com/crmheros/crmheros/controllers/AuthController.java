@@ -23,8 +23,7 @@ public class AuthController {
     @JsonView(DetailView.class)
     public Civil loginCivil(@PathVariable("mail") String mail) throws Exception {
 
-        return civilRepository.findByMail(mail).map(civil -> {
-            return civil;
-        }).orElseThrow(() -> new Exception("Le civil avec l'identifiant de service " + mail + " n'a pas été trouvé dans la database."));
+        return civilRepository.findByMail(mail)
+                .orElseThrow(() -> new Exception("Le civil avec l'identifiant de service " + mail + " n'a pas été trouvé dans la database."));
     }
 }
