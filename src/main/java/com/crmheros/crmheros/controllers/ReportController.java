@@ -14,10 +14,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/rapports")
-public class RapportsController {
+public class RapportController {
     private final RapportRepository rapportRepository;
 
-    public RapportsController(RapportRepository rr) {
+    public RapportController(RapportRepository rr) {
         this.rapportRepository = rr;
     }
 

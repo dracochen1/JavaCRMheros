@@ -14,7 +14,7 @@ public class IncidentControllerTest extends TestBase {
     @Test
     public void TestIncidentCreation() throws Exception{
         this.mockMvc.perform(
-                post("/incident/")
+                post("/incidents/")
                         .content("{ \"type\": \"Attaque d'un super-vilain\", \"description\": \"Un super vilain vient d'attaquer la ville de New-York\", \"location\": \"New-York(USA)\", \"source\" : \"Tony Stark\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
@@ -35,7 +35,7 @@ public class IncidentControllerTest extends TestBase {
         incidentRepository.save(i);
 
         this.mockMvc.perform(
-                get("/incident/" + i.getId().toString())
+                get("/incidents/" + i.getId().toString())
         )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.type").value("Attaque d'un super-vilain"))
@@ -56,7 +56,7 @@ public class IncidentControllerTest extends TestBase {
         incidentRepository.save(i);
 
         this.mockMvc.perform(
-                patch("/incident/" + i.getId().toString())
+                patch("/incidents/" + i.getId().toString())
                         .content("{ \"type\": \"Terroriste\", \"description\": \"Une bombe a explosé\", \"location\": \"Los angeles(USA)\", \"source\" : \"Président des USA\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
@@ -77,7 +77,7 @@ public class IncidentControllerTest extends TestBase {
         incidentRepository.save(i);
 
         this.mockMvc.perform(
-                delete("/incident/" + i.getId().toString())
+                delete("/incidents/" + i.getId().toString())
         )
                 .andExpect(status().isOk());
     }

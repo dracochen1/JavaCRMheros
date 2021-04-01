@@ -15,10 +15,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path="/crises")
-public class CrisesController {
+public class CrisisController {
     private final CriseRepository criseRepository;
 
-    public CrisesController (CriseRepository cr)
+    public CrisisController(CriseRepository cr)
     {
         this.criseRepository = cr;
     }
@@ -44,7 +44,7 @@ public class CrisesController {
 
     @PostMapping(path = "/")
     @JsonView(DetailView.class)
-    public Crise createCrise (@RequestBody CrisesController.CriseParams params)
+    public Crise createCrise (@RequestBody CrisisController.CriseParams params)
     {
         Crise c = new Crise();
         c.setType(params.type);
@@ -56,7 +56,7 @@ public class CrisesController {
 
     @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Crise updateCrise (@PathVariable UUID id, @RequestBody CrisesController.CriseParams params)
+    public Crise updateCrise (@PathVariable UUID id, @RequestBody CrisisController.CriseParams params)
     {
         Crise c = criseRepository.findById(id).orElseThrow();
         c.setType(params.type);

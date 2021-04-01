@@ -1,7 +1,7 @@
 package com.crmheros.crmheros.controllers;
 
 import com.crmheros.crmheros.TestBase;
-import com.crmheros.crmheros.models.Litige;
+import com.crmheros.crmheros.models.Litigation;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -9,11 +9,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class LitigeControllerTest extends TestBase {
+public class LitigationControllerTest extends TestBase {
     @Test
     public void TestLitigeCreation() throws Exception{
         this.mockMvc.perform(
-                post("/litige/")
+                post("/litiges/")
                     .content("{ \"object\": \"Litige mission de new york du 11 mars 2021\", \"type\": \"destruction de bien materiel\", \"relatedPersons\": \"Hulk, Iron-man\", \"mission\" : \"Mission du 11 mars\", \"cost\":1000000,\"photo\":\"...\" }")
                     .contentType(MediaType.APPLICATION_JSON)
         )
@@ -27,17 +27,17 @@ public class LitigeControllerTest extends TestBase {
     }
     @Test
     public void TestLitigeGet() throws Exception{
-        Litige l = new Litige();
+        Litigation l = new Litigation();
         l.setObject("Litige mission de new york du 11 mars 2021");
         l.setType("destruction de bien materiel");
         l.setRelatedPersons("Hulk, Iron-man");
         l.setMission("Mission du 11 mars");
         l.setCost(1000000);
         l.setPhoto("...");
-        litigeRepository.save(l);
+        litigationRepository.save(l);
 
         this.mockMvc.perform(
-                get("/litige/" + l.getId().toString())
+                get("/litiges/" + l.getId().toString())
         )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.object").value("Litige mission de new york du 11 mars 2021"))
@@ -49,17 +49,17 @@ public class LitigeControllerTest extends TestBase {
     }
     @Test
     public void TestLitigeUpdate() throws Exception{
-        Litige l = new Litige();
+        Litigation l = new Litigation();
         l.setObject("Litige mission de new york du 11 mars 2021");
         l.setType("destruction de bien materiel");
         l.setRelatedPersons("Hulk, Iron-man");
         l.setMission("Mission du 11 mars");
         l.setCost(1000000);
         l.setPhoto("...");
-        litigeRepository.save(l);
+        litigationRepository.save(l);
 
         this.mockMvc.perform(
-                patch("/litige/" + l.getId().toString())
+                patch("/litiges/" + l.getId().toString())
                         .content("{ \"object\": \"Litige mission los angeles du 10 decembre 2019\", \"type\": \"destruction de bien materiel\", \"relatedPersons\": \"Spider-man\", \"mission\" : \"Mission du 10 decembre 2019\", \"cost\":10000,\"photo\":\"...\" }")
                         .contentType(MediaType.APPLICATION_JSON)
         )
@@ -73,16 +73,16 @@ public class LitigeControllerTest extends TestBase {
     }
     @Test
     public void TestLitigeDelete() throws Exception{
-        Litige l = new Litige();
+        Litigation l = new Litigation();
         l.setObject("Litige mission de new york du 11 mars 2021");
         l.setType("destruction de bien materiel");
         l.setRelatedPersons("Hulk, Iron-man");
         l.setMission("Mission du 11 mars");
         l.setCost(1000000);
         l.setPhoto("...");
-        litigeRepository.save(l);
+        litigationRepository.save(l);
         this.mockMvc.perform(
-                delete("/litige/" + l.getId().toString())
+                delete("/litiges/" + l.getId().toString())
         )
                 .andExpect(status().isOk());
     }

@@ -35,7 +35,7 @@ public class Rapport {
 
     @OneToMany(mappedBy = "rapport")
     @JsonView(ListView.class)
-    private Set<Crise> crises;
+    private Set<Crisis> crises;
 
     public UUID getId() {
         return id;

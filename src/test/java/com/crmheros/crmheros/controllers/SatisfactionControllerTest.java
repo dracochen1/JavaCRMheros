@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SatisfactionsControllerTest extends TestBase {
+public class SatisfactionControllerTest extends TestBase {
     @Test
     public void TestSatisfactionCreation() throws Exception {
         this.mockMvc.perform(
