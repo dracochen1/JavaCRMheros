@@ -1,7 +1,7 @@
 package com.crmheros.crmheros.controllers;
 
 import com.crmheros.crmheros.TestBase;
-import com.crmheros.crmheros.models.Crise;
+import com.crmheros.crmheros.models.Crisis;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class CrisesControllerTest extends TestBase{
+public class CrisisControllerTest extends TestBase{
     @Test
     public void TestCriseCreation() throws Exception
     {
@@ -26,10 +26,10 @@ public class CrisesControllerTest extends TestBase{
     @Test
     public void TestCriseGet() throws Exception
     {
-        Crise c = new Crise();
+        Crisis c = new Crisis();
         c.setType("Bomb in LA");
         c.setDescription("A victim complains about our superhero who had to abandon his son to save the mayor");
-        criseRepository.save(c);
+        crisisRepository.save(c);
 
         this.mockMvc.perform(
                 get("/crises/" + c.getId().toString())
@@ -43,10 +43,10 @@ public class CrisesControllerTest extends TestBase{
     @Test
     public void TestCriseUpdate() throws Exception
     {
-        Crise c = new Crise();
+        Crisis c = new Crisis();
         c.setType("Bomb in LA");
         c.setDescription("A victim complains about our superhero who had to abandon his son to save the mayor");
-        criseRepository.save(c);
+        crisisRepository.save(c);
 
         this.mockMvc.perform(
                 patch("/crises/" + c.getId().toString())
@@ -62,10 +62,10 @@ public class CrisesControllerTest extends TestBase{
     @Test
     public void TestCriseDelete() throws Exception
     {
-        Crise c = new Crise();
+        Crisis c = new Crisis();
         c.setType("Bomb in LA");
         c.setDescription("A victim complains about our superhero who had to abandon his son to save the mayor");
-        criseRepository.save(c);
+        crisisRepository.save(c);
 
         this.mockMvc.perform(
                 delete("/crises/" + c.getId().toString())

@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class CivilsControllerTest extends TestBase
+public class CivilControllerTest extends TestBase
 {
     @Test
     public void TestUserCreation() throws Exception

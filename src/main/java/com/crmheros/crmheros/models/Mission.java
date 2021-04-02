@@ -63,11 +63,11 @@ public class Mission {
 
     @OneToMany(mappedBy = "mission")
     @JsonView(ListView.class)
-    private Set<Rapport> rapports;
+    private Set<Report> reports;
 
     @OneToMany(mappedBy = "mission")
     @JsonView(ListView.class)
-    private Set<Crise> crises;
+    private Set<Crisis> crises;
 
     public UUID getId() {
         return id;

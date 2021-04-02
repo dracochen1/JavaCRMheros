@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class MissionsControllerTest extends TestBase{
+public class MissionControllerTest extends TestBase{
     @Test
     public void TestMissionsCreation() throws Exception {
         this.mockMvc.perform(

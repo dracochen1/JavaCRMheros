@@ -14,10 +14,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/satisfactions")
-public class SatisfactionsController {
+public class SatisfactionController {
     private final SatisfactionRepository satisfactionRepository;
 
-    public SatisfactionsController(SatisfactionRepository sr) {
+    public SatisfactionController(SatisfactionRepository sr) {
         this.satisfactionRepository = sr;
     }
 
@@ -35,7 +35,7 @@ public class SatisfactionsController {
 
     @PostMapping(path = "/")
     @JsonView(DetailView.class)
-    public Satisfaction createSatisfaction(@RequestBody SatisfactionsController.SatisfactionParams params) {
+    public Satisfaction createSatisfaction(@RequestBody SatisfactionController.SatisfactionParams params) {
         Satisfaction s = new Satisfaction();
         s.setPhone(params.phone);
         s.setMail(params.mail);
@@ -50,7 +50,7 @@ public class SatisfactionsController {
 
     @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Satisfaction updateSatisfaction(@PathVariable UUID id, @RequestBody SatisfactionsController.SatisfactionParams params) {
+    public Satisfaction updateSatisfaction(@PathVariable UUID id, @RequestBody SatisfactionController.SatisfactionParams params) {
         Satisfaction s = satisfactionRepository.findById(id).orElseThrow();
         s.setPhone(params.phone);
         s.setMail(params.mail);

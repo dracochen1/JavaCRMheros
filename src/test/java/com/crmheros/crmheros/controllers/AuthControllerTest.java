@@ -26,10 +26,10 @@ public class AuthControllerTest extends TestBase {
         civilRepository.save(c);
 
         this.mockMvc.perform(
-                get("/auth/login/" + c.getId().toString())
+                get("/auth/login/" + c.getMail())
 
         )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(c.getId().toString()));
+                .andExpect(jsonPath("$.mail").value(c.getMail()));
     }
 }

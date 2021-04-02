@@ -1,7 +1,7 @@
 package com.crmheros.crmheros.controllers;
 
 import com.crmheros.crmheros.TestBase;
-import com.crmheros.crmheros.models.Rapport;
+import com.crmheros.crmheros.models.Report;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class RapportsControllerTest extends TestBase
+public class ReportControllerTest extends TestBase
 {
     @Test
     public void TestRapportCreation() throws Exception
@@ -26,10 +26,10 @@ public class RapportsControllerTest extends TestBase
 
     @Test
     public void TestRapportGet() throws Exception {
-        Rapport r = new Rapport();
+        Report r = new Report();
         r.setResponsible("Jules Cano");
         r.setComment("Très mécontent");
-        rapportRepository.save(r);
+        reportRepository.save(r);
 
         this.mockMvc.perform(
                 get("/rapports/" + r.getId().toString())
@@ -42,10 +42,10 @@ public class RapportsControllerTest extends TestBase
 
     @Test
     public void TestRapportUpdate() throws Exception {
-        Rapport r = new Rapport();
+        Report r = new Report();
         r.setResponsible("Jules Carno");
         r.setComment("Très mécontent");
-        rapportRepository.save(r);
+        reportRepository.save(r);
 
         this.mockMvc.perform(
                 patch("/rapports/" + r.getId().toString())
@@ -60,10 +60,10 @@ public class RapportsControllerTest extends TestBase
 
     @Test
     public void TestRapportDelete() throws Exception {
-        Rapport r = new Rapport();
+        Report r = new Report();
         r.setResponsible("Poulevorde");
         r.setComment("Très mécontent");
-        rapportRepository.save(r);
+        reportRepository.save(r);
 
         this.mockMvc.perform(
                 delete("/rapports/" + r.getId().toString())

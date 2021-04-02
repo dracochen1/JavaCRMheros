@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
-@Entity(name = "crises")
-public class Crise {
+@Entity(name = "rapports")
+public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "org.hibernate.type.PostgresUUIDType")
@@ -19,39 +19,23 @@ public class Crise {
 
     @Column(nullable = false)
     @JsonView(DetailView.class)
-    private String type;
+    private String responsible;
 
     @Column(nullable = false)
-    @JsonView(DetailView.class)
-    private String description;
-
-    @ManyToOne
     @JsonView(ListView.class)
-    private Rapport rapport;
+    private String comment;
 
     @ManyToOne
     @JsonView(ListView.class)
     private Mission mission;
 
-    @OneToMany(mappedBy = "crise")
+    @OneToMany(mappedBy = "report")
     @JsonView(ListView.class)
-    private Set<Litige> litiges;
+    private Set<Satisfaction> satisfactions;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @OneToMany(mappedBy = "report")
+    @JsonView(ListView.class)
+    private Set<Crisis> crises;
 
     public UUID getId() {
         return id;
@@ -61,19 +45,27 @@ public class Crise {
         this.id = id;
     }
 
-    public Rapport getRapport() {
-        return rapport;
+    public String getResponsible() {
+        return responsible;
     }
 
-    public void setRapport(Rapport rapport) {
-        this.rapport = rapport;
+    public void setResponsible(String responsible) {
+        this.responsible = responsible;
     }
 
-    public Set<Litige> getLitiges() {
-        return litiges;
+    public String getComment() {
+        return comment;
     }
 
-    public void setLitiges(Set<Litige> litiges) {
-        this.litiges = litiges;
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Set<Satisfaction> getSatisfactions() {
+        return satisfactions;
+    }
+
+    public void setSatisfactions(Set<Satisfaction> satisfactions) {
+        this.satisfactions = satisfactions;
     }
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity(name = "Litige")
-public class Litige {
+public class Litigation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "org.hibernate.type.PostgresUUIDType")
@@ -42,7 +42,7 @@ public class Litige {
 
     @ManyToOne
     @JsonView(ListView.class)
-    private Crise crise;
+    private Crisis crisis;
 
     public UUID getId() {
         return id;
@@ -100,11 +100,11 @@ public class Litige {
         this.photo = photo;
     }
 
-    public Crise getCrise() {
-        return crise;
+    public Crisis getCrise() {
+        return crisis;
     }
 
-    public void setCrise(Crise crise) {
-        this.crise = crise;
+    public void setCrise(Crisis crisis) {
+        this.crisis = crisis;
     }
 }

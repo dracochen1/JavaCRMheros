@@ -22,13 +22,13 @@ public abstract class TestBase {
     protected OrganizationRepository organizationRepository;
 
     @Autowired
-    protected CriseRepository criseRepository;
+    protected CrisisRepository crisisRepository;
 
     @Autowired
     protected SatisfactionRepository satisfactionRepository;
 
     @Autowired
-    protected RapportRepository rapportRepository;
+    protected ReportRepository reportRepository;
 
     @Autowired
     protected MissionRepository missionRepository;
@@ -40,7 +40,7 @@ public abstract class TestBase {
     protected SuperRepository superRepository;
 
     @Autowired
-    protected LitigeRepository litigeRepository;
+    protected LitigationRepository litigationRepository;
 
     @Autowired
     protected IncidentRepository incidentRepository;

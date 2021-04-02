@@ -1,7 +1,7 @@
 package com.crmheros.crmheros.controllers;
 
-import com.crmheros.crmheros.models.Rapport;
-import com.crmheros.crmheros.repositories.RapportRepository;
+import com.crmheros.crmheros.models.Report;
+import com.crmheros.crmheros.repositories.ReportRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -14,56 +14,56 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/rapports")
-public class RapportsController {
-    private final RapportRepository rapportRepository;
+public class ReportController {
+    private final ReportRepository reportRepository;
 
-    public RapportsController(RapportRepository rr) {
-        this.rapportRepository = rr;
+    public ReportController(ReportRepository rr) {
+        this.reportRepository = rr;
     }
 
     @GetMapping(path = "/")
     @JsonView(ListView.class)
-    public Iterable<Rapport> getRapports() {
-        return rapportRepository.findAll();
+    public Iterable<Report> getReports() {
+        return reportRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Optional<Rapport> getRapport(@PathVariable UUID id) {
-        return rapportRepository.findById(id);
+    public Optional<Report> getReport(@PathVariable UUID id) {
+        return reportRepository.findById(id);
     }
 
     @PostMapping(path = "/")
     @JsonView(DetailView.class)
-    public Rapport createRapport(@RequestBody RapportParams params) {
-        Rapport r = new Rapport();
+    public Report createReport(@RequestBody ReportParams params) {
+        Report r = new Report();
         r.setResponsible(params.responsible);
         r.setComment(params.comment);
 
-        rapportRepository.save(r);
+        reportRepository.save(r);
         return r;
     }
 
     @PatchMapping(path = "/{id}")
     @JsonView(DetailView.class)
-    public Rapport updateRapport(@PathVariable UUID id, @RequestBody RapportParams params) {
-        Rapport r = rapportRepository.findById(id).orElseThrow();
+    public Report updateReport(@PathVariable UUID id, @RequestBody ReportParams params) {
+        Report r = reportRepository.findById(id).orElseThrow();
         r.setResponsible(params.responsible);
         r.setComment(params.comment);
 
-        rapportRepository.save(r);
+        reportRepository.save(r);
         return r;
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Void> deleteRapport(@PathVariable UUID id) {
-        Rapport r = rapportRepository.findById(id).orElseThrow();
-        rapportRepository.delete(r);
+    public ResponseEntity<Void> deleteReport(@PathVariable UUID id) {
+        Report r = reportRepository.findById(id).orElseThrow();
+        reportRepository.delete(r);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public static final class RapportParams {
+    public static final class ReportParams {
         public String responsible;
         public String comment;
     }
