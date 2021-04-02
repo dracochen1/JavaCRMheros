@@ -11,6 +11,9 @@ import java.util.UUID;
 import java.util.Set;
 import java.util.Date;
 
+/**
+ * C'est notre orga
+ */
 @Entity(name = "organizations")
 public class Organization {
     @Id
@@ -20,7 +23,7 @@ public class Organization {
     private UUID id;
 
     @Column(nullable = false)
-    @JsonView(DetailView.class)
+    @JsonView(ListView.class)
     private String name;
 
     @Column(nullable = false)
