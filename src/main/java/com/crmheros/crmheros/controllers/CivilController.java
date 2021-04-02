@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+
 @RestController
 @RequestMapping(path="/civils")
 public class CivilController {
@@ -101,6 +102,7 @@ public class CivilController {
     public Civil updateCivil (@PathVariable UUID id, @RequestBody CivilParams params)
     {
         Civil c = civilRepository.findById(id).orElseThrow();
+        var orga = organizationRepository.findById(params.organization).orElseThrow();
         c.setFirstName(params.firstName);
         c.setLastName(params.lastName);
         c.setCivility(params.civility);
@@ -115,6 +117,13 @@ public class CivilController {
         c.setLastModificationDate(params.lastModificationDate);
         c.setNumberOfIncidentsDeclared(params.numberOfIncidentsDeclared);
         c.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
+        c.setOrganization(orga);
+
+        Role r = new Role();
+        r.setCivil(c);
+        r.setRole(RoleStatus.employee);
+        r.setActif(true);
+        r.setCreatedAt(new Date());
 
         civilRepository.save(c);
         return c;

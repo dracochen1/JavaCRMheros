@@ -20,7 +20,7 @@ public class Civil {
     private UUID id;
 
     @Column(nullable = false)
-    @JsonView(DetailView.class)
+    @JsonView(ListView.class)
     private String firstName;
 
     @Column(nullable = false)
