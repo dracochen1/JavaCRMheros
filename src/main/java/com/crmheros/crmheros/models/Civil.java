@@ -11,6 +11,11 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Civilian model, central actors of our BDD
+ */
+
+
 @Entity(name = "civils")
 public class Civil {
     @Id

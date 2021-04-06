@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Incident model, to be reactive in the event of danger
+ */
+
 @Entity(name = "incidents")
 public class Incident {
     @Id

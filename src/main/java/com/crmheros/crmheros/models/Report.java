@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Report model, to remember the actions performed
+ */
+
 @Entity(name = "rapports")
 public class Report {
     @Id

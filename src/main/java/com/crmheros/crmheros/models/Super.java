@@ -10,6 +10,10 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
+/**
+ * Super model, to manage extraordinary people
+ */
+
 @Entity(name = "supers")
 public class Super {
     @Id

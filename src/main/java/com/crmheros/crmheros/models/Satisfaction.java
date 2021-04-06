@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Satisfaction model, to judge the performance of supers
+ */
+
 @Entity(name = "satisfactions")
 public class Satisfaction {
 

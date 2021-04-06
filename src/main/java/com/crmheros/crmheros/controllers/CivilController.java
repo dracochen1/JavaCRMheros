@@ -7,6 +7,7 @@ import com.crmheros.crmheros.models.RoleStatus;
 import com.crmheros.crmheros.repositories.CivilRepository;
 
 import com.crmheros.crmheros.repositories.OrganizationRepository;
+import com.crmheros.crmheros.repositories.RoleRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -18,6 +19,9 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Controller to manage our civil (API, HTTP verbs)
+ */
 
 @RestController
 @RequestMapping(path="/civils")
@@ -26,10 +30,13 @@ public class CivilController {
 
     private final OrganizationRepository organizationRepository;
 
-    public CivilController(CivilRepository cr, OrganizationRepository or)
+    private final RoleRepository roleRepository;
+
+    public CivilController(CivilRepository cr, OrganizationRepository or, RoleRepository ro)
     {
         this.civilRepository = cr;
         this.organizationRepository = or;
+        this.roleRepository = ro;
     }
 
     @GetMapping(path = "/")
@@ -59,7 +66,7 @@ public class CivilController {
         public String comment;
         public String dateAdded;
         public String lastModificationDate;
-        public String role;
+        public RoleStatus role;
         public UUID organization;
         public Integer numberOfIncidentsDeclared;
         public Integer numberOfAccidentsSuffered;
@@ -87,13 +94,15 @@ public class CivilController {
         c.setNumberOfAccidentsSuffered(params.numberOfAccidentsSuffered);
         c.setOrganization(orga);
 
+        civilRepository.save(c);
+
         Role r = new Role();
         r.setCivil(c);
-        r.setRole(RoleStatus.employee);
+        r.setRole(params.role);
         r.setActif(true);
         r.setCreatedAt(new Date());
 
-        civilRepository.save(c);
+        roleRepository.save(r);
         return c;
     }
 
