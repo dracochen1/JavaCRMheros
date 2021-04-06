@@ -8,6 +8,10 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
+/**
+ * Litigation model, to ensure everyone's legal protection
+ */
+
 @Entity(name = "Litige")
 public class Litigation {
     @Id

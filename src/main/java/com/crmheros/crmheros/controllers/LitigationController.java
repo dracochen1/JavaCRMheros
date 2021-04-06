@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Controller to manage our litigation (API, HTTP verbs)
+ */
+
 @RestController
 @RequestMapping(path = "/litiges")
 public class LitigationController {

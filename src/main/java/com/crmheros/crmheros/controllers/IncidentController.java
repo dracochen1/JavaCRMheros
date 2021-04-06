@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Controller to manage our incident (API, HTTP verbs)
+ */
+
 @RestController
 @RequestMapping(path = "/incidents")
 public class IncidentController {

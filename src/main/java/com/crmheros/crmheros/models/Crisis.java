@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Model of the crisis, in order to manage the damage of the supers
+ */
+
 @Entity(name = "crises")
 public class Crisis {
     @Id

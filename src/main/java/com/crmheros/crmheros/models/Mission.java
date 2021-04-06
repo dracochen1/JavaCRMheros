@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Mission model, to save the world more effectively
+ */
+
 @Entity(name = "missions")
 public class Mission {
     @Id

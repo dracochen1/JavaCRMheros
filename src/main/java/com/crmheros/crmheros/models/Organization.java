@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.Date;
 
 /**
- * C'est notre orga
+ * Organizational model, to be as close as possible to our partners
  */
 @Entity(name = "organizations")
 public class Organization {

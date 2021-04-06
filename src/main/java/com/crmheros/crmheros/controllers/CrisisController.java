@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Controller to manage our crise (API, HTTP verbs)
+ */
+
 @RestController
 @RequestMapping(path="/crises")
 public class CrisisController {

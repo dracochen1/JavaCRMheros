@@ -2,7 +2,6 @@ package com.crmheros.crmheros.controllers;
 
 import com.crmheros.crmheros.models.Super;
 import com.crmheros.crmheros.repositories.CivilRepository;
-import com.crmheros.crmheros.repositories.OrganizationRepository;
 import com.crmheros.crmheros.repositories.SuperRepository;
 import com.crmheros.crmheros.views.DetailView;
 import com.crmheros.crmheros.views.ListView;
@@ -13,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
+
+/**
+ * Controller to manage our super (API, HTTP verbs)
+ */
 
 @RestController
 @RequestMapping(path = "/supers")
@@ -41,7 +44,7 @@ public class SuperController {
     }
 
     @GetMapping("/count")
-    private Long getNumberOfUsers(){
+    private Long getNumberOfSuper(){
         return superRepository.count();
     }
 

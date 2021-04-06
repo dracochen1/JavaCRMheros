@@ -9,6 +9,10 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Role model, to define permissions
+ */
+
 @Entity(name = "roles")
 public class Role {
     @Id

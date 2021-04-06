@@ -14,6 +14,10 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Controller to manage our organization (API, HTTP verbs)
+ */
+
 @RestController
 @RequestMapping(path = "/organizations")
 class OrganizationController {
